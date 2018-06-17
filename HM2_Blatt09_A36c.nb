@@ -1,0 +1,14 @@
+f[a_] = Solve[
+   D[Sin[x[y]*x[y]] + 2*x[y]*y + Cos[y^2] + x[y] - 4*y - 1 == 0, {y, 
+     a}], D[x[y], {y, a}]];
+Erste Ableitung :
+  Values[f[1] /. {y -> 0, x[y] -> 0}]
+Zweite Ableitung :
+  Values[f[2] /. {y -> 0, x[y] -> 0, 
+     D[x[y], {y, 1}] -> Values[f[1] /. {y -> 0, x[y] -> 0}]}]
+Dritte Ableitung :
+  Values[f[3] /. {y -> 0, x[y] -> 0,
+     D[x[y], {y, 1}] -> Values[f[1] /. {y -> 0, x[y] -> 0}],
+     D[x[y], {y, 2}] -> 
+      Values[f[2] /. {y -> 0, x[y] -> 0, 
+         D[x[y], {y, 1}] -> Values[f[1] /. {y -> 0, x[y] -> 0}]}]}]
